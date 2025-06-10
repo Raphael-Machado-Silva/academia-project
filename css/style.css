@@ -370,7 +370,6 @@ section {
 
 /* ESTILOS PARA ANIMAÇÃO DOS CARDS */
 
-
 /* ==================== */
 /* ESTILOS DA SEÇÃO ABOUT */
 /* ==================== */
@@ -402,7 +401,6 @@ section {
 /* ANIMAÇÃO DOS CARDS - TELAS GRANDES */
 @media (min-width: 1200px) {
     .about-card {
-        opacity: 1 ;
         width: calc(100% - 100px);
         margin-left: 0;
         margin-right: 0;
@@ -429,7 +427,7 @@ section {
     
     /* Efeito hover */
     .about-card.show:hover {
-        transform:  translateX(0) !important;
+        transform: translateX(0) !important;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
     
@@ -476,22 +474,8 @@ section {
 /* RESPONSIVIDADE GERAL */
 /* ==================== */
 
-/* Tablets (992px para baixo) */
+/* Dispositivos grandes (992px para baixo) */
 @media (max-width: 992px) {
-    .about-card, 
-    .reverse {
-        flex-direction: column;
-    }
-    
-    .about-img {
-        width: 100%;
-        min-height: 300px;
-    }
-    
-    .about-content {
-        padding: 30px;
-    }
-    
     /* Header */
     .navbar {
         position: fixed;
@@ -520,10 +504,35 @@ section {
     .header-cta {
         display: none;
     }
+    
+    .mobile-menu {
+        display: block;
+        z-index: 1000;
+    }
+    
+    .mobile-menu.active i::before {
+        content: '\f00d';
+    }
+    
+    /* Seção Sobre */
+    .about-card, 
+    .reverse {
+        flex-direction: column;
+    }
+    
+    .about-img {
+        width: 100%;
+        min-height: 300px;
+    }
+    
+    .about-content {
+        padding: 30px;
+    }
 }
 
-/* Dispositivos médios (768px para baixo) */
+/* Tablets (768px para baixo) */
 @media (max-width: 768px) {
+    /* Hero Section */
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -543,8 +552,9 @@ section {
     }
 }
 
-/* Celulares (576px para baixo) */
+/* Dispositivos pequenos (576px para baixo) */
 @media (max-width: 576px) {
+    /* Header */
     .logo img {
         height: 40px;
     }
@@ -557,14 +567,17 @@ section {
         width: 250px;
     }
     
+    /* Seções */
     .section-title {
         font-size: 2rem;
     }
     
+    /* Hero Section */
     .hero h1 {
         font-size: 2rem;
     }
     
+    /* Sobre */
     .about-content h3 {
         font-size: 1.5rem;
     }
@@ -581,8 +594,9 @@ section {
     }
 }
 
-/* Celulares pequenos (480px para baixo) */
+/* Dispositivos muito pequenos (480px para baixo) */
 @media (max-width: 480px) {
+    /* Ajustes específicos para telas muito pequenas */
     .hero h1 {
         font-size: 1.8rem;
     }
