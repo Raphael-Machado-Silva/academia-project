@@ -40,3 +40,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+// Efeito de revelação dos cards ao scroll
+const aboutCards = document.querySelectorAll('.about-card');
+
+function animateCards() {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    
+    aboutCards.forEach((card, index) => {
+        const cardTop = card.getBoundingClientRect().top;
+        
+        if (cardTop < triggerBottom) {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, index * 200);
+        }
+    });
+}
+
+// Otimização com Intersection Observer (mais eficiente)
+function initScrollAnimation() {
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('show');
+                    }, index * 200);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        aboutCards.forEach(card => {
+            observer.observe(card);
+        });
+    } else {
+        // Fallback para browsers antigos
+        window.addEventListener('scroll', animateCards);
+        animateCards(); // Executa uma vez ao carregar
+    }
+}
+
+// Inicia a animação
+initScrollAnimation();
