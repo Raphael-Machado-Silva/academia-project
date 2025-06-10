@@ -336,7 +336,7 @@ section {
 
 .about-features {
     list-style: none;
-    margin-top: 25px;
+    margin-top: 35px;
 }
 
 .about-features li {
@@ -369,33 +369,129 @@ section {
 
 
 /* ESTILOS PARA ANIMAÇÃO DOS CARDS */
-.about-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-}
 
-.about-card.reverse {
-    transform: translateY(30px);
-}
 
-.about-card.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Garante que a seção about sempre tenha fundo visível */
+/* ==================== */
+/* ESTILOS DA SEÇÃO ABOUT */
+/* ==================== */
 .about-section {
-    background-color: #070707; /* ou a cor que você está usando */
-    overflow: hidden; /* previne vazamento de margens */
+    padding: 100px 0;
+    background-color: #070707;
+    overflow: hidden;
+}
+
+.about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+/* ESTILOS BASE DOS CARDS */
+.about-card {
+    display: flex;
+    min-height: 350px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+    cursor: pointer;
+}
+
+/* ANIMAÇÃO DOS CARDS - TELAS GRANDES */
+@media (min-width: 1200px) {
+    .about-card {
+        opacity: 1 ;
+        width: calc(100% - 100px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* Card normal (ímpar) - entra da esquerda */
+    .about-card:not(.reverse) {
+        margin-right: auto;
+        transform: translateX(-100px);
+    }
+    
+    /* Card invertido (par) - entra da direita */
+    .about-card.reverse {
+        margin-left: auto;
+        flex-direction: row-reverse;
+        transform: translateX(100px);
+    }
+    
+    /* Estado final da animação */
+    .about-card.show {
+        opacity: 1;
+        transform: translateX(0) !important;
+    }
+    
+    /* Efeito hover */
+    .about-card.show:hover {
+        transform:  translateX(0) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Ajustes de conteúdo */
+    .about-img {
+        flex: 1;
+        min-height: 500px;
+    }
+    
+    .about-content {
+        flex: 0.8;
+        padding: 60px;
+    }
+}
+
+/* ANIMAÇÃO DOS CARDS - TELAS PEQUENAS */
+@media (max-width: 1199px) {
+    .about-card {
+        width: 100%;
+        transform: translateY(50px); /* Animação vertical para mobile */
+    }
+    
+    .about-card.reverse {
+        transform: translateY(50px);
+    }
+    
+    .about-card.show {
+        opacity: 1;
+        transform: translateY(0) !important;
+    }
+}
+
+/* EFEITO DE SOBREPOSIÇÃO DA IMAGEM */
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,90,44,0.1) 0%, rgba(10,10,10,0.5) 100%);
 }
 
 /* ==================== */
 /* RESPONSIVIDADE GERAL */
 /* ==================== */
 
-/* Dispositivos grandes (992px para baixo) */
+/* Tablets (992px para baixo) */
 @media (max-width: 992px) {
+    .about-card, 
+    .reverse {
+        flex-direction: column;
+    }
+    
+    .about-img {
+        width: 100%;
+        min-height: 300px;
+    }
+    
+    .about-content {
+        padding: 30px;
+    }
+    
     /* Header */
     .navbar {
         position: fixed;
@@ -424,35 +520,10 @@ section {
     .header-cta {
         display: none;
     }
-    
-    .mobile-menu {
-        display: block;
-        z-index: 1000;
-    }
-    
-    .mobile-menu.active i::before {
-        content: '\f00d';
-    }
-    
-    /* Seção Sobre */
-    .about-card, 
-    .reverse {
-        flex-direction: column;
-    }
-    
-    .about-img {
-        width: 100%;
-        min-height: 300px;
-    }
-    
-    .about-content {
-        padding: 30px;
-    }
 }
 
-/* Tablets (768px para baixo) */
+/* Dispositivos médios (768px para baixo) */
 @media (max-width: 768px) {
-    /* Hero Section */
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -472,9 +543,8 @@ section {
     }
 }
 
-/* Dispositivos pequenos (576px para baixo) */
+/* Celulares (576px para baixo) */
 @media (max-width: 576px) {
-    /* Header */
     .logo img {
         height: 40px;
     }
@@ -487,17 +557,14 @@ section {
         width: 250px;
     }
     
-    /* Seções */
     .section-title {
         font-size: 2rem;
     }
     
-    /* Hero Section */
     .hero h1 {
         font-size: 2rem;
     }
     
-    /* Sobre */
     .about-content h3 {
         font-size: 1.5rem;
     }
@@ -514,9 +581,8 @@ section {
     }
 }
 
-/* Dispositivos muito pequenos (480px para baixo) */
+/* Celulares pequenos (480px para baixo) */
 @media (max-width: 480px) {
-    /* Ajustes específicos para telas muito pequenas */
     .hero h1 {
         font-size: 1.8rem;
     }
