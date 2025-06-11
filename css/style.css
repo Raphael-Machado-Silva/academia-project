@@ -100,13 +100,14 @@ section {
 }
 
 .logo img {
-    margin-top: -10px;
+    margin-top: 5px;
     height: 90px;
     transition: var(--transition);
+    border-radius: 50%;
 }
 
 .header.scrolled .logo img {
-    height: 40px;
+    height: 80px;
 }
 
 .nav-list {
@@ -627,6 +628,43 @@ section {
     .about-content {
         flex: 0.8;
         padding: 60px;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr 1.1fr 1fr; /* Plano do meio 10% maior */
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .plan-card.featured {
+        transform: scale(1.05);
+        height: 105%; /* Aumenta a altura */
+        margin: -2.5% 0; /* Compensa o aumento de altura */
+    }
+    
+    .plan-card.featured:hover {
+        transform: scale(1.08) translateY(-10px); /* Efeito hover mais pronunciado */
+    }
+    
+    .plan-card.featured .plan-header {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .plan-card.featured .plan-price .amount {
+        font-size: 4rem; /* Preço maior no plano destacado */
+    }
+    
+    .plan-card.featured .btn-plan {
+        padding: 18px; /* Botão maior */
+        font-size: 1.05rem;
+    }
+
+    .left-card{
+        margin-left: -120px;
+    }
+    .right-card{
+        margin-right: -120px;
     }
 }
 
