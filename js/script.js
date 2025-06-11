@@ -85,3 +85,29 @@ function initScrollAnimation() {
 
 // Inicia a animação
 initScrollAnimation();
+
+
+// Animação dos cards de planos
+const planCards = document.querySelectorAll('.plan-card');
+
+function animatePlanCards() {
+    planCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+}
+
+// Inicia animação quando a seção for visível
+const plansObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animatePlanCards();
+            plansObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+plansObserver.observe(document.querySelector('.plans-section'));
+
