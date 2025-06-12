@@ -412,6 +412,184 @@ section {
     align-items: center;
 }
 
+
+/* ==================== */
+/* SEÇÃO DE MODALIDADES */
+/* ==================== */
+.modalities-section {
+    padding: 100px 0;
+    background-color: #070707;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.modalities-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,90,44,0.05) 0%, rgba(10,10,10,1) 100%);
+    z-index: -10;
+}
+
+.modalities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 0;
+    margin-top: 50px;
+}
+
+.modality-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    position: relative;
+}
+
+.modality-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 90, 44, 0.3);
+}
+
+.modality-img {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.modality-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.modality-card:hover .modality-img img {
+    transform: scale(1.05);
+}
+
+.modality-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 50%);
+}
+
+.modality-content {
+    padding: 25px;
+    position: relative;
+}
+
+.modality-content h3 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.modality-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.modality-content p {
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.modality-features {
+    list-style: none;
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.modality-features li {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.modality-features i {
+    color: var(--primary-color);
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+.btn-modality {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-modality i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-modality:hover {
+    color: var(--secondary-color);
+}
+
+.btn-modality:hover i {
+    transform: translateX(5px);
+}
+
+.modality-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.modality-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,90,44,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.modality-card:hover::after {
+    opacity: 1;
+}
+
+
+
 /* ABA DE PLANOS */
 
 .plans-section {
