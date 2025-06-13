@@ -111,3 +111,56 @@ const plansObserver = new IntersectionObserver((entries) => {
 
 plansObserver.observe(document.querySelector('.plans-section'));
 
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona todos os grupos de formulário
+    const formGroups = document.querySelectorAll('.form-group');
+    
+    // Função para atualizar o estado do label
+    function updateLabel(input) {
+        const label = input.nextElementSibling;
+        const underline = label.nextElementSibling;
+        
+        if (input.value || input === document.activeElement) {
+            label.style.top = '-20px';
+            label.style.fontSize = '0.8rem';
+            label.style.color = 'var(--primary-color)';
+            underline.style.width = '100%';
+        } else {
+            label.style.top = '10px';
+            label.style.fontSize = '1rem';
+            label.style.color = '#aaa';
+            underline.style.width = '0';
+        }
+    }
+    
+    // Adiciona os event listeners para cada campo
+    formGroups.forEach(group => {
+        const input = group.querySelector('input, textarea');
+        const label = group.querySelector('label');
+        const underline = group.querySelector('.underline');
+        
+        // Configura os estilos iniciais
+        label.style.position = 'absolute';
+        label.style.left = '0';
+        label.style.pointerEvents = 'none';
+        label.style.transition = 'all 0.3s ease';
+        
+        underline.style.position = 'absolute';
+        underline.style.bottom = '0';
+        underline.style.left = '0';
+        underline.style.height = '2px';
+        underline.style.backgroundColor = 'var(--primary-color)';
+        underline.style.transition = 'all 0.3s ease';
+        
+        // Eventos para cada campo
+        input.addEventListener('focus', () => updateLabel(input));
+        input.addEventListener('blur', () => updateLabel(input));
+        input.addEventListener('input', () => updateLabel(input));
+        
+        // Atualiza o estado inicial
+        updateLabel(input);
+    });
+});
